@@ -6,36 +6,12 @@
 
 **特此声明**：项目用于学习交流，仅用于各项无异常时打卡，如有身体不适等情况还请自行如实打卡！
 
-* 可定时，默认为每天 00:05
+* 可定时，默认为每天 00:05 [修改打卡时间](#修改打卡时间)
 * 默认每次提交上次所提交的内容 （只有时间部分更新）
 
 ##  Usage
 
-## 获取 Cookie
-
-获取 eai-sess 和 UUkey
-
-1. 打开浏览器，按 F12 (Mac 按 ⌥Option+⌘Command+i ) 调出控制台
-
-2. 打开 Network 选项，勾选 Preserve log![](https://s2.loli.net/2022/08/13/NslBm98qkfuvpyM.png)
-
-3. 打开健康打卡页面 [https://wfw.scu.edu.cn/ncov/wap/default/index](https://wfw.scu.edu.cn/ncov/wap/default/index)
-
-4. 若跳转至此页面，输入学工号与统一身份认证密码进行登录![](https://s2.loli.net/2022/08/13/oGUukrQn4F1iJyP.jpg)
-
-5. 在左侧找到 index 并点开，在右侧找到 Request Headers，将 Cookie 中的 eai-sess 和 UUkey 记录下来![](https://s2.loli.net/2022/08/13/Ejw5tI6md9MnTeH.png)
-
-如果以上方法未能找到 index 页面和 Cookie 中的 eai-sess 和 UUke，请尝试按下图方法搜索：
-
-1. 打开 Network 选项，勾选 Preserve log![](https://s2.loli.net/2022/08/13/KWG1ux2m7DI5Hi8.png)
-
-2. 点击放大镜处的搜索按钮![](https://s2.loli.net/2022/08/13/ZPXw5W8AjQn6Jh7.png)
-
-3. 搜索 eai-sess![](https://s2.loli.net/2022/08/13/uMAm2G8Lx5gS7Js.jpg)
-
-4. 搜索 UUkey![](https://s2.loli.net/2022/08/13/th56UXkpxwKZ2PD.jpg)
-
-### 运行方式
+## 运行方式
 
 1. import 本项目到你的个人账号
 
@@ -70,7 +46,9 @@
 
     * UUKEY：你的 UUkey cookie
 
-    \* 学工号和统一身份认证密码 (USERNAME 和 PASSWORD) **暂时先不需要**，已经添加的**可以删除**（因为四川大学登录比中南大学复杂一些，有验证码 : | 还没弄出来）
+    \* 这两个密码（准确说是 cookie）的获取方式请参阅文章 [获取 cookie 部分](#获取-cookie)
+
+    \* 学工号和统一身份认证密码 (USERNAME 和 PASSWORD) 暂时先不需要，已经添加的可以删除（因为四川大学登录比中南大学复杂一些，有验证码 : | 还没弄出来）
 4. 启动定时打卡
 
     进入 Code 页面，点击修改按钮
@@ -92,6 +70,39 @@
     ![](https://s2.loli.net/2022/08/13/LMmujI9Wthx6lcS.png)
 
     ![](https://s2.loli.net/2022/08/13/3CqFYj1Un28GgQw.png)
+
+## 获取 Cookie
+
+获取 eai-sess 和 UUkey
+
+0. 在电脑上安装 [微信](https://pc.weixin.qq.com/?t=win_weixin&lang=zh_CN) (不一定要最新版) 和 [Fiddler](https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe)
+
+1. 打开微信，进入微服务的服务号，但是**先别点击**打卡提醒的消息![](https://s2.loli.net/2022/09/13/YUpeiA9cbTkZCWy.png)
+
+2. 打开 Fiddler，并确保已经开始了抓包（窗口左下角 **Capturing**，一般默认是开着的）
+![](https://s2.loli.net/2022/09/13/8cJKAQGqV6UYXdB.png)
+
+3. 在打开抓包的前提下，**点击打卡提醒**消息并在打开的窗口登录，直到如图所示的界面
+![](https://s2.loli.net/2022/09/13/lsgmKr5uOyzWYhc.png)
+
+4. 此时可以注意到后面的 Fiddler 窗口已经记录下了网络通讯。打开**域名为 wfw.scu.edu.cn** 的任意一个请求，右侧窗口中切换到 **Inspectors 选项卡**，即可在 Cookies 里面找到这两个值，右键 Copy 即可。
+![](https://s2.loli.net/2022/09/13/SdgrCQnPMm1KZNa.png)
+\* 遇到任何问题**请提交 issues**，我都会查看并回答 ^-^
+---
+如果以上方法未能找到 index 页面和 Cookie 中的 eai-sess 和 UUke，请尝试按下图方法搜索：
+
+**注意**：这种方法获取的 cookie 据反馈保质期较短（约为三天），因此**不建议使用**
+
+1. 打开浏览器，按 F12 (Mac 按 ⌥Option+⌘Command+i ) 调出控制台
+
+2. 打开 Network 选项，勾选 Preserve log![](https://s2.loli.net/2022/08/13/NslBm98qkfuvpyM.png)
+
+3. 打开健康打卡页面 [https://wfw.scu.edu.cn/ncov/wap/default/index](https://wfw.scu.edu.cn/ncov/wap/default/index)
+
+4. 若跳转至此页面，输入学工号与微服务认证密码（统一身份认证）进行登录。或使用微信扫码登录![](https://s2.loli.net/2022/08/13/oGUukrQn4F1iJyP.jpg)
+
+5. 在左侧找到 index 并点开，在右侧找到 Request Headers，将 Cookie 中的 eai-sess 和 UUkey 记录下来![](https://s2.loli.net/2022/08/13/Ejw5tI6md9MnTeH.png)
+
 ## 修改打卡时间
 
 打开项目中的 /.github/workflows/python-package.yml 文件，修改 corn 中的值，注意使用 UTC 零区时间。
