@@ -61,11 +61,19 @@
 
 5. 查看运行情况
 
+    ⚠ **特别注意**：首次运行几乎都会报错，因为今日你**已经手动打卡**过了
+
     打开 Actions 页面，此时在 workflows 中应该出现了正在运行的工作流。当提交文件时会马上进行一次打卡，以后将会默认在每天的 00:05 进行打卡
 
-    ![](https://s2.loli.net/2022/08/13/7pHABnJcv8Cdhji.png)
+    ⭐在接下来的这几天请您**时刻留意**观察微服务里的打卡情况，确认脚本运行正常
 
-    效果图：
+    \* 建议打开邮件提醒，这样只要脚本运行中有出现任何问题 GitHub 就会发邮件告知：
+
+    ![](https://s2.loli.net/2022/09/22/IUAspFxd6uYWfOn.png)
+
+6. 效果图：
+
+    ![](https://s2.loli.net/2022/08/13/7pHABnJcv8Cdhji.png)
 
     ![](https://s2.loli.net/2022/08/13/LMmujI9Wthx6lcS.png)
 
